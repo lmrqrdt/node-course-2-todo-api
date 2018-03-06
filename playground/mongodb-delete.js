@@ -4,7 +4,7 @@
 
 const {MongoClient, ObjectID} = require('mongodb');
 
-MongoClient.connect('mongodb://localhost:27017/ToDoApp', (err, db) => {
+MongoClient.connect('mongodb://localhost:27017/ToDoApp01', (err, db) => {
   if(err) {
     return console.log('Unable to connect to MongoDB server!');
   }
@@ -12,27 +12,27 @@ MongoClient.connect('mongodb://localhost:27017/ToDoApp', (err, db) => {
   console.log('Connected to MongoDB server!');
 
   // deleteMany
-  // db.collection('Todos').deleteMany({text: 'Eat lunch'}).then((result) => {
+  // db.collection('Todos01').deleteMany({text: 'Eat lunch'}).then((result) => {
   //   console.log(result);
   // });
 
   // deleteOne
-  // db.collection('Todos').deleteOne({text: 'Eat lunch'}).then((result) => {
+  // db.collection('Todos01').deleteOne({text: 'Eat lunch'}).then((result) => {
   //   console.log(result);
   // });
 
   // findOneAndDelete
-  // db.collection('Todos').findOneAndDelete({completed: false}).then((result) => {
+  // db.collection('Todos01').findOneAndDelete({completed: false}).then((result) => {
   //   console.log(result);
   // });
 
   // challenge: use deleteMany and findOneAndDelete on Users
-  // db.collection('Users').deleteMany({name: 'Larry'}).then((result) => {
+  // db.collection('Users01').deleteMany({name: 'Larry'}).then((result) => {
   //   console.log(result);
   // });
 
-  db.collection('Users').findOneAndDelete({
-    _id: new ObjectID('5a924190236a0ae3c6bd1f93')
+  db.collection('Users01').findOneAndDelete({
+    _id: new ObjectID('5a9b6629fd61739ca71353ca')
   }).then((results) => {
       console.log(JSON.stringify(results, undefined, 2));
   });
