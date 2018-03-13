@@ -7,10 +7,6 @@ let {User} = require('./models/users');
 
 let app = express();
 
-app.listen(3000, () => {
-  console.log('Started on port 3000');
-});
-
 app.use(bodyParser.json());
 
 app.post('/todos', (req, res) => {
@@ -23,6 +19,18 @@ app.post('/todos', (req, res) => {
   }, (e) => {
     res.status(400).send(e);
   })
+});
+
+app.get('/todos', (req, res) => {
+  ToDo.find().then((todos) => {
+    res.send({todos})
+  }, (e) => {
+    res.status(400).send(e);
+  });
+});
+
+app.listen(3000, () => {
+  console.log('Started on port 3000');
 });
 
 module.exports = {app};
