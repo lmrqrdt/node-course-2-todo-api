@@ -85,7 +85,7 @@ describe('/GET todos:id', () => {
 
   it('should return 404 if todo not found', (done) => {
     request(app)
-      .get('/todos/todos new ObjectID().toHexString()')
+      .get('/todos/todos/ new ObjectID().toHexString()')
       .expect(404)
       .end(done);
     });
@@ -97,11 +97,3 @@ describe('/GET todos:id', () => {
         .end(done);
       });
 });
-
-// describe('/GET todos:id', () => {
-//
-// });
-//
-// describe('/GET todos:id', () => {
-//
-// });
