@@ -1,3 +1,5 @@
+require('config/config');
+
 const _ = require('lodash');
 const {ObjectID} = require('mongodb');
 const express = require('express');
@@ -7,7 +9,7 @@ const {mongoose} = require('./db/mongoose');
 const {ToDo} = require('./models/todos');
 const {User} = require('./models/users');
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 
 let app = express();
 
@@ -65,6 +67,7 @@ app.delete('/todos/:id', (req, res) => {
 
 app.patch('/todos/:id', (req, res) => {
   let id = req.params.id;
+
   let body = _.pick(req.body, ['text', 'completed']);
 
   if(!ObjectID.isValid(id)) {
