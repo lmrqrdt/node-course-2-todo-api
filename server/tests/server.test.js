@@ -224,7 +224,7 @@ describe('POST /users', () => {
 
         User.findOne({email}).then((user) => {
           expect(user).toBeTruthy();
-          // expect(user.password).toBeFalsy();
+          expect(user.password).not.toBe();
           done();
         })
       });
@@ -248,7 +248,7 @@ describe('POST /users', () => {
       .post('/users')
       .send({
         email: users[0].email,
-        password: 'passsword123!'
+        password: 'passsword123!  ``'
       })
       .expect(400)
       .end(done)
