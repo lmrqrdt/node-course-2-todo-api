@@ -16,12 +16,14 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.2",
+    "chai": "^4.1.2",
     "crypto-js": "^3.1.9-1",
     "express": "^4.16.3",
     "jsonwebtoken": "^8.2.0",
     "lodash": "^4.17.5",
     "mongodb": "^2.2.35",
     "mongoose": "^5.0.11",
+    "save": "^2.3.2",
     "validator": "^9.4.1"
   },
   "devDependencies": {
