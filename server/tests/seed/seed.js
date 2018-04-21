@@ -18,22 +18,28 @@ const users = [{
 },{
   _id: userTwoId,
   email: 'larrym83@example.com',
-  password: 'userTwoPass'
+  password: 'userTwoPass',
+  tokens: [{
+    access: 'auth',
+    token: jwt.sign({_id: userTwoId, access: 'auth'}, 'randomSeedValue').toString()
+  }]
 }]
 
-const todos01 = [{
+const todos = [{
   _id: new ObjectID(),
-  text: 'First test todo'
+  text: 'First test todo',
+  _creator: userOneId
 }, {
   _id: new ObjectID(),
   text: 'Second test todo',
   completed: true,
-  completedAt: 333
+  completedAt: 333,
+  _creator: userTwoId
 }];
 
 const populateToDos = (done) => {
   ToDo.remove({}).then(() => {
-    return ToDo.insertMany(todos01);
+    return ToDo.insertMany(todos);
   }).then(() => done())
 };
 
@@ -46,4 +52,4 @@ const populateUsers = (done) => {
   }).then(() => done());
 };
 
-module.exports = {todos01, populateToDos, users, populateUsers};
+module.exports = {todos, populateToDos, users, populateUsers};
