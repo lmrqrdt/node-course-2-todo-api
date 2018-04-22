@@ -207,7 +207,7 @@ describe('PATCH /todos:id', () => {
         completed: true,
         text
       })
-      .expect(400)
+      .expect(404)
       .end(done);
   });
 
@@ -327,12 +327,13 @@ describe('POST /users/login', () => {
         }
 
       User.findById(users[1]._id).then((user) => {
-        expect(user.tokens[1]).toHaveProperty(
-          'access', 'auth',
-        );
-        expect(user.tokens[1]).toHaveProperty(
-          'token', res.headers['x-auth']
-        );
+        expect(user.toObject().tokens[1]).toMatchObject({
+          'access': 'auth',
+          'token': res.headers['x-auth']
+        });
+        // expect(user.tokens[1]).toHaveProperty(
+        //
+        // );
 
         done();
       }).catch((e) => done(e));
