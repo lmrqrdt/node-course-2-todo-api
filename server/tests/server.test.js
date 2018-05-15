@@ -48,12 +48,12 @@ describe('POST /todos', () => {
             return done(err);
           }
 
-      ToDo.find().then((todos) => {
-        expect(todos.length).toBe(2);
-        done();
-      }).catch((e) => done(e))
+        ToDo.find().then((todos) => {
+          expect(todos.length).toBe(2);
+          done();
+        }).catch((e) => done(e))
+      });
     });
-  });
 });
 
 describe('/GET todos', () => {
