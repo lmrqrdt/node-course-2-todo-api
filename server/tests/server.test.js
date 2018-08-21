@@ -311,6 +311,7 @@ describe('POST /users', () => {
 
 describe('POST /users/login', () => {
   it('should login user and return auth token', (done) => {
+    
     request(app)
       .post('/users/login')
       .send({
@@ -378,6 +379,27 @@ describe('DELETE /users/me/token', () => {
 
       User.findById(users[0]._id).then((user) => {
         expect(user.tokens.length).toBe(0);
+        done();
+      }).catch((e) => done(e));
+    });
+  });
+});
+
+describe('DELETE /users/:id', () => {
+  it('should delete a user by id', (done) => {
+    let hexId = users[0]._id.toHexString();
+
+    request(app)
+      .delete(`/users/${hexId}`)
+      .set('x-auth', users[0].tokens[0].token)
+      .expect(200)
+      .end((err, res) => {
+        if (err) {
+          return done(err);
+        }
+
+      User.findOneAndRemove(users[0]._id).then((user) => {
+        expect(user.id.toBeTruthy);
         done();
       }).catch((e) => done(e));
     });

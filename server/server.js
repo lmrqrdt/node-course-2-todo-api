@@ -145,8 +145,26 @@ app.delete('/users/me/token', authenticate, (req, res) => {
   });
 });
 
+app.delete('/users/:id', authenticate, (req, res) => {
+  let id = req.params.id;
+
+  if(!ObjectID.isValid(id)) {
+    return res.status(404).send();
+  };
+
+  User.findOneAndRemove({
+    _id: id,
+  }).then((user) => {
+    if(!user){
+      return res.status(404).send();
+    }
+      res.send({user});
+  }).catch((e) => res.status(400).send());
+})
+
 app.listen(port, () => {
   console.log(`Started on port ${port}`);
 });
+
 
 module.exports = {app};
