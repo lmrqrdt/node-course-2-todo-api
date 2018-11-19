@@ -1,6 +1,12 @@
+<br>
 <div class="create-user-container">
   <mat-form-field>
-    <input matInput placeholder="Enter your email" [formControl]="email" required>
-    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+    <input matInput placeholder="Enter your email" required>
+    <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+  </mat-form-field>
+<br>
+  <mat-form-field>
+    <input matInput placeholder="Enter your password" required>
+    <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
   </mat-form-field>
 </div>
