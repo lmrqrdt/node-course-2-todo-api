@@ -1,12 +1,19 @@
 <br>
 <div class="create-user-container">
-  <mat-form-field>
-    <input matInput placeholder="Enter your email" required>
-    <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
-  </mat-form-field>
-<br>
-  <mat-form-field>
-    <input matInput placeholder="Enter your password" required>
-    <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
-  </mat-form-field>
+  <form (submit)="onCreateUser()">
+    <mat-form-field>
+      <input matInput placeholder="Enter your email" [formControl]="email" required>
+      <mat-error *ngIf="email.errors">Email is invalid please try again.</mat-error>
+    </mat-form-field>
+  <br>
+    <mat-form-field>
+      <input matInput placeholder="Enter your password" type="password" [formControl]="password"  required>
+      <mat-error *ngIf="password.errors">Password is not required minimum length (6) please try again.</mat-error>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button color="primary" type="submit">Submit user</button>
+  </form>
+
+  <p *ngIf="!pending && completed && submitted">User created!</p>
+  <p *ngIf="!pending && !completed && submitted">User not created!</p>
 </div>

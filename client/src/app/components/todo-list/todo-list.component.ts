@@ -12,7 +12,7 @@ export class TodoListComponent {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
-        'x-auth': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YjgyMTllYWM4NDlmMjBkZjA4ZGYwOTIiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTM1MjUyOTk3fQ.x4F5IutlNKImZVVaWTwdPPmyAJXysnXcbXOr3thuVzs'
+        'x-auth': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YmZhZjc3YmFkYWI3NDAzYjgxYzBmNTQiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTQzMTc0MDMzfQ.gNq2ZMH1InLIq-GJ5_tZccmofqp53O9jsslKxrVJBFU'
       })
     };
     http.get('http://localhost:3000/todos', httpOptions)
