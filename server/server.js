@@ -23,7 +23,6 @@ app.post('/todos', authenticate, (req, res) => {
     text: req.body.text,
     _creator: req.user._id
   });
-
   todo.save().then((doc) => {
     res.send(doc);
   }, (e) => {
