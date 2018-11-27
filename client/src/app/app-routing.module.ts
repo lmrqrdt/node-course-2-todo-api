@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { CreateUserComponent } from './components/create-user/create-user.component';
 import { LoginComponent } from './components/login/login.component';
+import { LogoffComponent } from './components/logoff/logoff.component';
 import { PostTodoComponent } from './components/post-todo/post-todo.component';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
 
@@ -11,6 +12,7 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'post-todo', component: PostTodoComponent },
   { path: 'todo-list', component: TodoListComponent },
+  { path: 'logoff', component: LogoffComponent }
   // { path: '',   redirectTo: '/todo-list', pathMatch: 'full' },
 ];
 

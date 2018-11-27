@@ -1,3 +1,19 @@
-<p>
-  login works!
-</p>
+<br>
+<div class="login-user-container">
+  <form (submit)="onLogin()">
+    <mat-form-field>
+      <input matInput placeholder="Enter your email" [formControl]="email" required>
+      <mat-error *ngIf="email.errors">Email is invalid please try again.</mat-error>
+    </mat-form-field>
+  <br>
+    <mat-form-field>
+      <input matInput placeholder="Enter your password" type="password" [formControl]="password"  required>
+      <mat-error *ngIf="password.errors">Minimum six characters.</mat-error>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button color="primary" type="submit">Submit login</button>
+  </form>
+
+  <p *ngIf="!pending && completed && submitted">User logged on!</p>
+  <p *ngIf="!pending && !completed && submitted">Login credentials not valid!</p>
+</div>
