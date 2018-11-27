@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -8,21 +8,34 @@ import { FormControl, Validators } from '@angular/forms';
   styleUrls: ['./logoff.component.css']
 })
 export class LogoffComponent {
-  userToken = new HttpHeaders({'Content Type': 'xauth'});
+  pending: boolean;
+  completed: boolean;
+  submitted: boolean;
 
   constructor(private http: HttpClient) {
-    const httpOptions = {
-      userToken = new HttpHeaders({'Content Type': 'x-auth'});
-    }
+    this.pending = false;
+    this.completed = false;
+    this.submitted = false;
   }
 
   onLogoff() {
-    this.http.delete('http://localhost:3000/users/me/token');
-      // .subscribe((data: any) => this.userToken = data.token);
-
-  }
-
-  ngOnInit() {
+    this.pending = true;
+    this.submitted = true;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application.json',
+        'x-auth': localStorage.getItem('token')
+      })
+    };
+    this.http.delete('http://localhost:3000/users/me/token', httpOptions)
+    .subscribe((data: HttpResponse<any>) => {
+      localStorage.removeItem('token');
+      this.completed = true;
+      this.pending = false;
+   }, (error: any) => {
+     this.completed = false;
+     this.pending = false;
+   });
   }
 
 }

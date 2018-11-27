@@ -3,5 +3,8 @@
   <form (submit)="onLogoff()">
     <button mat-raised-button color="primary" type="submit">Confirm logoff.</button>
   </form>
+
+  <p *ngIf="!pending && completed && submitted">User logged off!</p>
+  <p *ngIf="!pending && !completed && submitted">Unable to log user off!</p>
 </div>
 

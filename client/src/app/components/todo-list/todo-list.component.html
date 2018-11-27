@@ -2,3 +2,6 @@
 <ul>
   <li *ngFor="let todo of todos">{{todo.text}}</li>
 </ul>
+
+<p *ngIf="!pending && completed && submitted">This is your todo list.</p>
+<p *ngIf="!pending && !completed && submitted">Unable to retreive todos!</p>
