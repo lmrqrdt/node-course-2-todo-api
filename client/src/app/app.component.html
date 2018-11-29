@@ -1,12 +1,16 @@
 <h1>UI for node-todo-api</h1>
 <nav class="top-menu">
+  <button mat-raised-button class="first-button" color="primary">Login</button> <app-logoff></app-logoff>
   <ul>
     <li><a href="/">Home</a></li>
     <li><a href="/create-user">Create an account</a></li>
     <li><a href="/login">Login</a></li>
-    <li><a href="/post-todo">Create a todo item</a></li>
-    <li><a href="/todo-list">Get all todos</a></li>
-    <li><a href="/logoff">Logoff</a></li>
+    <li><a href="/post-todo">Create a to do item</a></li>
+    <li><a href="/todo-list">Get to do list</a></li>
+    <li><a href="/delete">Delete to do</a></li>
+    <br>
+    <!--<li><a href="/logoff">Logoff</a></li>-->
   </ul>
+
 </nav>
 <router-outlet></router-outlet>

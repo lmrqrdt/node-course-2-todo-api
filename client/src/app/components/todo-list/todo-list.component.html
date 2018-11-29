@@ -1,6 +1,9 @@
 <h3>Todo List</h3>
 <ul>
-  <li *ngFor="let todo of todos">{{todo.text}}</li>
+  <li *ngFor="let todo of todos">{{todo.text}}<br>
+    <app-mark [parentToDo]="todo"></app-mark><br>
+    Delete this to do?<app-delete></app-delete>{{todo.token}}<br>
+    </li>
 </ul>
 
 <p *ngIf="!pending && completed && submitted">This is your todo list.</p>
