@@ -15,6 +15,7 @@ import { PostTodoComponent } from './components/post-todo/post-todo.component';
 import { LogoffComponent } from './components/logoff/logoff.component';
 import { MarkComponent } from './components/mark/mark.component';
 import { DeleteComponent } from './components/delete/delete.component';
+import { DeleteUserComponent } from './components/delete-user/delete-user.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { DeleteComponent } from './components/delete/delete.component';
     LogoffComponent,
     MarkComponent,
     DeleteComponent,
+    DeleteUserComponent,
   ],
   imports: [
     BrowserModule,

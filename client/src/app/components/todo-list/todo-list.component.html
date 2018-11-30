@@ -1,9 +1,10 @@
-<h3>Todo List</h3>
+<h2>Todo List</h2>
+<a href="post-todo">Create a new to do item</a>
 <ul>
   <li *ngFor="let todo of todos">{{todo.text}}<br>
-    <app-mark [parentToDo]="todo"></app-mark><br>
-    Delete this to do?<app-delete></app-delete>{{todo.token}}<br>
-    </li>
+    <app-mark [parentToDo]="todo"></app-mark>
+    <app-delete [parentToDo]="todo" (isDeleted)="refreshTodo($event)"></app-delete><br>
+  </li>
 </ul>
 
 <p *ngIf="!pending && completed && submitted">This is your todo list.</p>

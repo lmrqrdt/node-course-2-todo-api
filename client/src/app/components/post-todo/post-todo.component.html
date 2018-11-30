@@ -9,6 +9,6 @@
     <button mat-raised-button color="primary" type="submit">Submit To Do Item</button>
   </form>
 
-  <p *ngIf="!pending && completed && submitted">To Do item created (see Get all todos link)!</p>
+  <p *ngIf="!pending && completed && submitted">To Do item created! <br><a href="todo-list">Get to do list</a> or add another to do.</p>
   <p *ngIf="!pending && !completed && submitted">To Do item not created!</p>
 </div>

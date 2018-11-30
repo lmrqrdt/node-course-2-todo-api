@@ -1,11 +1,12 @@
 <div>
-    <mat-checkbox class="completion-box"
+  <mat-checkbox
+    class="completion-box"
     labelPosition="before"
     (change)="onMark($event)"
     [(checked)]="parentToDo.completed"
     [(ngModel)]="parentToDo.completed">
       Completed?
-    </mat-checkbox>{{displayCompleted()}}
+  </mat-checkbox>{{displayCompleted()}}
   <span *ngIf="parentToDo.completed">
     Completed At {{parentToDo.completedAt | date: 'medium'}}
   </span>

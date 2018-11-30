@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
   completed: boolean;
   submitted: boolean;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     this.pending = false;
     this.completed = false;
     this.submitted = false;
@@ -28,6 +29,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', data.headers.get('x-auth'));
         this.completed = true;
         this.pending = false;
+    this.router.navigate(['/todo-list']);
      }, (error: any) => {
        this.completed = false;
        this.pending = false;

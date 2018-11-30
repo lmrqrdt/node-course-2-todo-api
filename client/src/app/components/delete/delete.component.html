@@ -1,1 +1,11 @@
-<input type="checkbox" (submit)="onDelete()">
+<div>
+  <mat-checkbox
+    class="deletion-box"
+    labelPosition="before"
+    (change)="onDelete($event)">
+      Delete this to do?
+  </mat-checkbox>
+  <span *ngIf="deleteSuccess">
+    Deleted {{parentToDo.text}}
+  </span>
+</div>

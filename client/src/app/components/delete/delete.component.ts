@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-delete',
@@ -7,38 +8,30 @@ import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
   styleUrls: ['./delete.component.css']
 })
 export class DeleteComponent {
+  @Input() parentToDo: any;
+  @Output() isDeleted = new EventEmitter<string>();
+  deleteSuccess = false;
 
-  pending: boolean;
-  completed: boolean;
-  submitted: boolean;
-
-  todos: any[];
-  constructor(private http: HttpClient) {
-    this.pending = true;
-    this.completed = false;
-    this.submitted = true;
+  constructor(private http: HttpClient, private router: Router) {
   }
-  onDelete() {
-    this.pending = true;
-    this.submitted = true;
+
+  onDelete(event) {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type': 'application.json',
-        'x-auth': localStorage.getItem('token')
+        'Content-Type':  'application/json',
+        'x-auth': localStorage.getItem('token') || '',
+        observe: 'response'
       })
     };
-    this.http.delete('http://localhost:3000/todos', httpOptions)
-    .subscribe((data: HttpResponse<any>) => {
-      this.completed = true;
-      this.pending = false;
-
-    }, (e) => {
-      this.completed = false;
-      this.pending = false;
-    });
+    this.http.delete(`http://localhost:3000/todos/${this.parentToDo._id}`, httpOptions)
+    .subscribe((data: ({todo: {_id: string, token: string}})) => {
+      this.parentToDo.token = data.todo.token;
+      this.deleteSuccess = true;
+      setTimeout(() => this.isDeleted.emit(this.parentToDo._id), 2000);
+     }, (error: any) => {
+     }
+   );
   }
-
-  ngOnInit() {
-  }
-
 }
+
+

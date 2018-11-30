@@ -27,10 +27,14 @@ export class TodoListComponent {
         this.todos = data.todos;
         this.completed = true;
         this.pending = false;
-
       }, (e) => {
         this.completed = false;
         this.pending = false;
       });
+  }
+  refreshTodo(event) {
+    this.todos = this.todos.filter((t) => {
+      return t._id !== event;
+    });
   }
 }

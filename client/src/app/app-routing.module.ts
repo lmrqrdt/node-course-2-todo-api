@@ -7,7 +7,8 @@ import { LogoffComponent } from './components/logoff/logoff.component';
 import { PostTodoComponent } from './components/post-todo/post-todo.component';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { MarkComponent } from './components/mark/mark.component';
-import { DeleteComponent } from './components/delete/delete.component'
+import { DeleteComponent } from './components/delete/delete.component';
+import { DeleteUserComponent } from './components/delete-user/delete-user.component';
 
 const appRoutes: Routes = [
   { path: 'create-user', component: CreateUserComponent },
@@ -16,7 +17,8 @@ const appRoutes: Routes = [
   { path: 'post-todo', component: PostTodoComponent },
   { path: 'todo-list', component: TodoListComponent },
   { path: 'mark', component: MarkComponent },
-  { path: 'delete', component: DeleteComponent}
+  { path: 'delete', component: DeleteComponent},
+  { path: 'delete-user', component: DeleteUserComponent }
   // { path: '',   redirectTo: '/todo-list', pathMatch: 'full' },
 ];
 
