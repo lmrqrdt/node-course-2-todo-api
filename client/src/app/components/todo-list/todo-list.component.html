@@ -2,8 +2,8 @@
 <a href="post-todo">Create a new to do item</a>
 <ul>
   <li *ngFor="let todo of todos">{{todo.text}}<br>
-    <app-mark [parentToDo]="todo"></app-mark>
-    <app-delete [parentToDo]="todo" (isDeleted)="refreshTodo($event)"></app-delete><br>
+    <app-mark-todo [parentToDo]="todo"></app-mark-todo>
+    <app-delete-todo [parentToDo]="todo" (isDeleted)="refreshTodo($event)"></app-delete-todo><br>
   </li>
 </ul>
 

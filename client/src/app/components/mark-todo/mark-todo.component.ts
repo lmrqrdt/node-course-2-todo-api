@@ -2,11 +2,11 @@ import { Component, Input } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 
 @Component({
-  selector: 'app-mark',
-  templateUrl: './mark.component.html',
-  styleUrls: ['./mark.component.css']
+  selector: 'app-mark-todo',
+  templateUrl: './mark-todo.component.html',
+  styleUrls: ['./mark-todo.component.css']
 })
-export class MarkComponent {
+export class MarkTodoComponent {
   @Input() parentToDo: any;
 
   constructor(private http: HttpClient) {

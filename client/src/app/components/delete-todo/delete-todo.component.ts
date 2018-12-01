@@ -25,7 +25,6 @@ export class DeleteTodoComponent {
     };
     this.http.delete(`http://localhost:3000/todos/${this.parentToDo._id}`, httpOptions)
     .subscribe((data: ({todo: {_id: string, token: string}})) => {
-      localStorage.removeItem('token');
       this.parentToDo.token = data.todo.token;
       this.deleteSuccess = true;
       setTimeout(() => this.isDeleted.emit(this.parentToDo._id), 2000);
