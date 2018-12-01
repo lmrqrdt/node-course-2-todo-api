@@ -3,11 +3,11 @@ import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-delete',
-  templateUrl: './delete.component.html',
-  styleUrls: ['./delete.component.css']
+  selector: 'app-delete-todo',
+  templateUrl: './delete-todo.component.html',
+  styleUrls: ['./delete-todo.component.css']
 })
-export class DeleteComponent {
+export class DeleteTodoComponent {
   @Input() parentToDo: any;
   @Output() isDeleted = new EventEmitter<string>();
   deleteSuccess = false;
@@ -25,6 +25,7 @@ export class DeleteComponent {
     };
     this.http.delete(`http://localhost:3000/todos/${this.parentToDo._id}`, httpOptions)
     .subscribe((data: ({todo: {_id: string, token: string}})) => {
+      localStorage.removeItem('token');
       this.parentToDo.token = data.todo.token;
       this.deleteSuccess = true;
       setTimeout(() => this.isDeleted.emit(this.parentToDo._id), 2000);
@@ -33,5 +34,3 @@ export class DeleteComponent {
    );
   }
 }
-
-
