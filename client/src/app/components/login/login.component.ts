@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-login',
@@ -11,28 +12,21 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required, Validators.minLength(6)]);
-  pending: boolean;
-  completed: boolean;
-  submitted: boolean;
 
-  constructor(private http: HttpClient, private router: Router) {
-    this.pending = false;
-    this.completed = false;
-    this.submitted = false;
+  private readonly notifier: NotifierService;
+
+  constructor(private http: HttpClient, private router: Router, notifierService: NotifierService) {
+    this.notifier = notifierService;
   }
 
   onLogin() {
-    this.pending = true;
-    this.submitted = true;
     this.http.post('http://localhost:3000/users/login', ({email: this.email.value, password: this.password.value}), { observe: 'response' })
       .subscribe((data: HttpResponse<({email: string, password: string})>) => {
         localStorage.setItem('token', data.headers.get('x-auth'));
-        this.completed = true;
-        this.pending = false;
+        this.notifier.notify( 'success', 'User sucessfully logged in!' );
     this.router.navigate(['/todo-list']);
      }, (error: any) => {
-       this.completed = false;
-       this.pending = false;
+       this.notifier.notify( 'error', 'Login credentials invalid!' );
      });
   }
 

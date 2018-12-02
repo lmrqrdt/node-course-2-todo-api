@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { MatFormFieldModule, MatInputModule, MatButtonModule } from '@angular/material';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NotifierModule } from 'angular-notifier';
 
 import { AppComponent } from './app.component';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
@@ -39,7 +40,8 @@ import { DeleteUserComponent } from './components/delete-user/delete-user.compon
     MatInputModule,
     MatButtonModule,
     MatCheckboxModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NotifierModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { FormControl, Validators } from '@angular/forms';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-create-user',
@@ -10,27 +11,18 @@ import { FormControl, Validators } from '@angular/forms';
 export class CreateUserComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required, Validators.minLength(6)]);
-  pending: boolean;
-  completed: boolean;
-  submitted: boolean;
+  private readonly notifier: NotifierService;
 
-  constructor(private http: HttpClient) {
-    this.pending = false;
-    this.completed = false;
-    this.submitted = false;
+  constructor(private http: HttpClient, notifierService: NotifierService) {
+    this.notifier = notifierService;
   }
 
   onCreateUser() {
-    this.pending = true;
-    this.submitted = true;
     this.http.post('http://localhost:3000/users', ({email: this.email.value, password: this.password.value}))
-
     .subscribe((data: HttpResponse<({_id: string, email: string})>) => {
-       this.completed = true;
-       this.pending = false;
+      this.notifier.notify( 'success', 'Your account has been created! Please login to proceed.' );
       }, (error: any) => {
-        this.completed = false;
-        this.pending = false;
+        this.notifier.notify( 'error', 'Unable to create user account!' );
       }
     );
   }

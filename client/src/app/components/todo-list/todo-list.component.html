@@ -6,6 +6,3 @@
     <app-delete-todo [parentToDo]="todo" (isDeleted)="refreshTodo($event)"></app-delete-todo><br>
   </li>
 </ul>
-
-<p *ngIf="!pending && completed && submitted">This is your todo list.</p>
-<p *ngIf="!pending && !completed && submitted">Unable to retreive todos!</p>

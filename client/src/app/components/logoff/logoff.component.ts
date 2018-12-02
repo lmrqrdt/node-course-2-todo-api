@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-logoff',
@@ -12,15 +13,13 @@ export class LogoffComponent {
   completed: boolean;
   submitted: boolean;
 
-  constructor(private http: HttpClient, private router: Router) {
-    this.pending = false;
-    this.completed = false;
-    this.submitted = false;
+  private readonly notifier: NotifierService;
+
+  constructor(private http: HttpClient, private router: Router, notifierService: NotifierService) {
+    this.notifier = notifierService;
   }
 
   onLogoff() {
-    this.pending = true;
-    this.submitted = true;
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application.json',
@@ -30,13 +29,11 @@ export class LogoffComponent {
     this.http.delete('http://localhost:3000/users/me/token', httpOptions)
     .subscribe((data: HttpResponse<any>) => {
       localStorage.removeItem('token');
-      this.completed = true;
-      this.pending = false;
+      this.notifier.notify( 'success', 'User logged off!' );
       this.router.navigate(['/']);
    }, (error: any) => {
-     this.completed = false;
-     this.pending = false;
-   });
+      // this.notifier.notify( 'error', 'No user is logged in!' );
+    });
   }
 
 }

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { FormControl, Validators } from '@angular/forms';
-import { analyzeAndValidateNgModules } from '@angular/compiler';
+import { Router } from '@angular/router';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-post-todo',
@@ -10,15 +11,11 @@ import { analyzeAndValidateNgModules } from '@angular/compiler';
 })
 export class PostTodoComponent {
   text = new FormControl('', [Validators.required, Validators.minLength(6)]);
-  pending: boolean;
-  completed: boolean;
-  submitted: boolean;
+  private readonly notifier: NotifierService;
 
-  constructor(private http: HttpClient) {
-    this.pending = true;
-    this.completed = false;
-    this.submitted = true;
-    }
+  constructor(private http: HttpClient, private router: Router, notifierService: NotifierService) {
+    this.notifier = notifierService;
+  }
 
     onCreatePost() {
       const httpOptions = {
@@ -29,11 +26,10 @@ export class PostTodoComponent {
       };
       this.http.post('http://localhost:3000/todos', ({ text: this.text.value }), httpOptions)
       .subscribe((data: HttpResponse<({text: string})>) => {
-        this.completed = true;
-        this.pending = false;
+        this.notifier.notify( 'success', 'Your to do has been created and saved!' );
+        this.router.navigate(['/todo-list']);
      }, (error: any) => {
-       this.completed = false;
-       this.pending = false;
+        this.notifier.notify( 'error', 'Unable to create to do!' );
      });
   }
 }
