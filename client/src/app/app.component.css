@@ -5,3 +5,8 @@ a {
 .link-list {
   list-style-type: none;
 }
+
+.pseudo-link {
+  color: blue;
+  text-decoration: underline;
+}

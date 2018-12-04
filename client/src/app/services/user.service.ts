@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { HttpHeaders, HttpClient, HttpResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { NotifierService } from 'angular-notifier';
 
@@ -35,8 +35,25 @@ export class UserService {
       });
     },
     (error: any) => {
-      this.notifier.notify( 'error', 'No user' );
+      this.notifier.notify( 'error', 'No user. Please log in to delete your account.' );
       return null;
+    });
+  }
+  onLogoff() {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application.json',
+        'x-auth': localStorage.getItem('token')
+      })
+    };
+    this.http.delete('http://localhost:3000/users/me/token', httpOptions)
+    .subscribe((data: HttpResponse<any>) => {
+      localStorage.removeItem('token');
+      this.notifier.notify( 'success', 'User logged off!' );
+      this.router.navigate(['/']);
+   }, (error: any) => {
+    this.notifier.notify( 'error', 'No user is logged in!' );
+    this.router.navigate(['/']);
     });
   }
 }

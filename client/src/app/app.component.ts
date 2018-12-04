@@ -14,5 +14,10 @@ export class AppComponent {
   finalDelteUser() {
     this.userService.onDeleteUser();
   }
+
+  finalLogoff() {
+    this.userService.onLogoff();
+  }
+
   // title = 'client';
 }

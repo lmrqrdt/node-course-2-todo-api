@@ -13,7 +13,6 @@ import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { LoginComponent } from './components/login/login.component';
 import { CreateUserComponent } from './components/create-user/create-user.component';
 import { PostTodoComponent } from './components/post-todo/post-todo.component';
-import { LogoffComponent } from './components/logoff/logoff.component';
 import { MarkTodoComponent } from './components/mark-todo/mark-todo.component';
 import { DeleteTodoComponent } from './components/delete-todo/delete-todo.component';
 
@@ -24,7 +23,6 @@ import { DeleteTodoComponent } from './components/delete-todo/delete-todo.compon
     LoginComponent,
     CreateUserComponent,
     PostTodoComponent,
-    LogoffComponent,
     MarkTodoComponent,
     DeleteTodoComponent,
   ],
