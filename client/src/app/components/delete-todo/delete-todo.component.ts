@@ -1,6 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
-import { Router } from '@angular/router';
 import { NotifierService } from 'angular-notifier';
 
 @Component({
@@ -14,7 +13,7 @@ export class DeleteTodoComponent {
   deleteSuccess = false;
   private readonly notifier: NotifierService;
 
-  constructor(private http: HttpClient, private router: Router, notifierService: NotifierService) {
+  constructor(private http: HttpClient,  notifierService: NotifierService) {
     this.notifier = notifierService;
   }
 

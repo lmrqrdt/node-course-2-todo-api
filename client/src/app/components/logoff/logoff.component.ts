@@ -9,9 +9,6 @@ import { NotifierService } from 'angular-notifier';
   styleUrls: ['./logoff.component.css']
 })
 export class LogoffComponent {
-  pending: boolean;
-  completed: boolean;
-  submitted: boolean;
 
   private readonly notifier: NotifierService;
 
@@ -32,8 +29,9 @@ export class LogoffComponent {
       this.notifier.notify( 'success', 'User logged off!' );
       this.router.navigate(['/']);
    }, (error: any) => {
-      // this.notifier.notify( 'error', 'No user is logged in!' );
+    this.notifier.notify( 'error', 'No user is logged in!' );
+    this.router.navigate(['/']);
     });
   }
-
 }
+

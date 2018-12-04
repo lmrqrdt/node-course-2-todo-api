@@ -2,13 +2,10 @@
 <div class="post-todo-container">
   <form (submit)="onCreatePost()">
     <mat-form-field>
-      <input matInput placeholder="Enter your task" [formControl]="text" required>
+      <input matInput placeholder="Enter your task" [formControl]="text" required autofocus>
       <!--<mat-error *ngIf="email.errors">Email is invalid please try again.</mat-error>-->
     </mat-form-field>
     <br>
     <button mat-raised-button color="primary" type="submit">Submit To Do Item</button>
   </form>
-
-  <p *ngIf="!pending && completed && submitted">To Do item created! <br><a href="todo-list">Get to do list</a> or add another to do.</p>
-  <p *ngIf="!pending && !completed && submitted">To Do item not created!</p>
 </div>
