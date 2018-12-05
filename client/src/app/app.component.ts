@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { UserService } from './services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -7,17 +6,5 @@ import { UserService } from './services/user.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-
-  constructor (private userService: UserService) {
-  }
-
-  finalDelteUser() {
-    this.userService.onDeleteUser();
-  }
-
-  finalLogoff() {
-    this.userService.onLogoff();
-  }
-
   // title = 'client';
 }

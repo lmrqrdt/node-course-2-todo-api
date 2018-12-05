@@ -2,8 +2,7 @@
 <div class="post-todo-container">
   <form (submit)="onCreatePost()">
     <mat-form-field>
-      <input matInput placeholder="Enter your task" [formControl]="text" required autofocus>
-      <!--<mat-error *ngIf="email.errors">Email is invalid please try again.</mat-error>-->
+      <input matInput placeholder="Enter your task" [formControl]="text" required autofocus="autofocus">
     </mat-form-field>
     <br>
     <button mat-raised-button color="primary" type="submit">Submit To Do Item</button>

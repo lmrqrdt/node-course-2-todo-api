@@ -21,10 +21,12 @@ export class UserService {
         'x-auth': localStorage.getItem('token')
       })
     };
+    // this block gets the user to be used in the next block
     this.http.get('http://localhost:3000/users/me', httpOptions)
     .subscribe((body: {_id: string, email: string}) => {
       console.log(body);
       this.notifier.notify( 'success', 'User returned!' );
+      // this block takes the user from above and deletes it
       this.http.delete(`http://localhost:3000/users/${body._id}`, httpOptions)
       .subscribe((body2: {_id: string, email: string}) => {
         localStorage.removeItem('token');

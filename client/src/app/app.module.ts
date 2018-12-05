@@ -15,6 +15,7 @@ import { CreateUserComponent } from './components/create-user/create-user.compon
 import { PostTodoComponent } from './components/post-todo/post-todo.component';
 import { MarkTodoComponent } from './components/mark-todo/mark-todo.component';
 import { DeleteTodoComponent } from './components/delete-todo/delete-todo.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { DeleteTodoComponent } from './components/delete-todo/delete-todo.compon
     PostTodoComponent,
     MarkTodoComponent,
     DeleteTodoComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
