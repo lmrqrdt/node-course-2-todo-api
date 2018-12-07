@@ -18,7 +18,7 @@ export class CreateUserComponent implements OnInit {
   }
 
   onCreateUser() {
-    this.http.post('http://localhost:3000/users', ({email: this.email.value, password: this.password.value}))
+    this.http.post('http://localhost/users', ({email: this.email.value, password: this.password.value}))
     .subscribe((data: HttpResponse<({_id: string, email: string})>) => {
       this.notifier.notify( 'success', 'Your account has been created! Please login to proceed.' );
       }, (error: any) => {
