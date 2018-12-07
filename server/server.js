@@ -18,6 +18,8 @@ app.use(cors());
 
 app.use(bodyParser.json());
 
+app.use(express.static(__dirname + '/dist/'));
+
 app.post('/todos', authenticate, (req, res) => {
   let todo = new ToDo ({
     text: req.body.text,
