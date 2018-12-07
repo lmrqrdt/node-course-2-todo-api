@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, AfterViewInit, ViewChildren } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -9,7 +9,8 @@ import { NotifierService } from 'angular-notifier';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements AfterViewInit {
+  @ViewChildren('input') vc;
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required, Validators.minLength(6)]);
 
@@ -30,7 +31,8 @@ export class LoginComponent implements OnInit {
      });
   }
 
-  ngOnInit() {
+  ngAfterViewInit() {
+    this.vc.first.nativeElement.focus();
   }
 
 }
