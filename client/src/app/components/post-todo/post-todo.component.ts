@@ -24,7 +24,7 @@ export class PostTodoComponent {
           'x-auth': localStorage.getItem('token') || ''
         })
       };
-      this.http.post('http://localhost:3000/todos', ({ text: this.text.value }), httpOptions)
+      this.http.post('https://rocky-everglades-44486.herokuapp.com/todos', ({ text: this.text.value }), httpOptions)
       .subscribe((data: HttpResponse<({text: string})>) => {
         this.notifier.notify( 'success', 'Your to do has been created and saved!' );
         this.router.navigate(['/todo-list']);

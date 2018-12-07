@@ -19,7 +19,7 @@ export class TodoListComponent {
       })
     }
     this.notifier = notifierService;
-    http.get('http://localhost:3000/todos', httpOptions)
+    http.get('https://rocky-everglades-44486.herokuapp.com/todos', httpOptions)
       .subscribe((data: any) => {
         this.todos = data.todos;
         this.notifier.notify( 'success', 'This is your to do list!' );

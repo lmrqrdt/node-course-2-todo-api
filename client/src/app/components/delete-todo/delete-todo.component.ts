@@ -25,7 +25,7 @@ export class DeleteTodoComponent {
         observe: 'response'
       })
     };
-    this.http.delete(`http://localhost:3000/todos/${this.parentToDo._id}`, httpOptions)
+    this.http.delete(`https://rocky-everglades-44486.herokuapp.com/todos/${this.parentToDo._id}`, httpOptions)
     .subscribe((data: ({todo: {_id: string, token: string}})) => {
       this.parentToDo.token = data.todo.token;
       this.deleteSuccess = true;

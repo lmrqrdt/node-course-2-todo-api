@@ -22,12 +22,12 @@ export class UserService {
       })
     };
     // this block gets the user to be used in the next block
-    this.http.get('http://localhost:3000/users/me', httpOptions)
+    this.http.get('https://rocky-everglades-44486.herokuapp.com/users/me', httpOptions)
     .subscribe((body: {_id: string, email: string}) => {
       console.log(body);
       this.notifier.notify( 'success', 'User returned!' );
       // this block takes the user from above and deletes it
-      this.http.delete(`http://localhost:3000/users/${body._id}`, httpOptions)
+      this.http.delete(`https://rocky-everglades-44486.herokuapp.com/users/${body._id}`, httpOptions)
       .subscribe((body2: {_id: string, email: string}) => {
         localStorage.removeItem('token');
         this.notifier.notify( 'success', 'Your account has been deleted!' );
@@ -48,7 +48,7 @@ export class UserService {
         'x-auth': localStorage.getItem('token')
       })
     };
-    this.http.delete('http://localhost:3000/users/me/token', httpOptions)
+    this.http.delete('https://rocky-everglades-44486.herokuapp.com/users/me/token', httpOptions)
     .subscribe((data: HttpResponse<any>) => {
       localStorage.removeItem('token');
       this.notifier.notify( 'success', 'User logged off!' );

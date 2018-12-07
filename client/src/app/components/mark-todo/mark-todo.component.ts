@@ -20,7 +20,7 @@ export class MarkTodoComponent {
         observe: 'response'
       })
     };
-    this.http.patch(`http://localhost:3000/todos/${this.parentToDo._id}`, {'completed': event.checked}, httpOptions)
+    this.http.patch(`https://rocky-everglades-44486.herokuapp.com/todos/${this.parentToDo._id}`, {'completed': event.checked}, httpOptions)
     .subscribe((data: ({todo: {_id: string, completed: Boolean, text: string, completedAt: string}})) => {
       this.parentToDo.completed = data.todo.completed;
       this.parentToDo.completedAt = data.todo.completedAt;
