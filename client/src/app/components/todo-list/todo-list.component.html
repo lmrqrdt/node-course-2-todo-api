@@ -1,5 +1,5 @@
 <h2>Todo List</h2>
-<a href="post-todo">Create a new to do item</a>
+<a [routerLink]="['/post-todo']">Create a new to do item</a>
 <ul>
   <li *ngFor="let todo of todos">{{todo.text}}<br>
     <app-mark-todo [parentToDo]="todo"></app-mark-todo>
