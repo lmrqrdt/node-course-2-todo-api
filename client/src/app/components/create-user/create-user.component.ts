@@ -23,7 +23,8 @@ export class CreateUserComponent {
   }
 
   onCreateUser() {
-    this.http.post('https://rocky-everglades-44486.herokuapp.com/users', ({email: this.email.value, password: this.password.value}))
+    this.http.post('https://rocky-everglades-44486.herokuapp.com/users',
+      ({email: this.email.value, password: this.password.value}))
     .subscribe((data: HttpResponse<({_id: string, email: string})>) => {
       this.notifier.notify( 'success', 'Your account has been created! Please login to proceed.' );
       this.router.navigate([('/login')]);

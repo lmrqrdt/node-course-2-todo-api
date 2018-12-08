@@ -21,7 +21,7 @@ export class UserService {
         'x-auth': localStorage.getItem('token')
       })
     };
-    this.http.delete('http://localhost:3000/users/me/token', httpOptions)
+    this.http.delete('https://rocky-everglades-44486.herokuapp.com/users/me/token', httpOptions)
     .subscribe((data: HttpResponse<any>) => {
       localStorage.removeItem('token');
       this.notifier.notify( 'success', 'User logged off!' );

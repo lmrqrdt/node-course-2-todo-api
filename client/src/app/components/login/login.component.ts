@@ -20,7 +20,9 @@ export class LoginComponent {
   }
 
   onLogin() {
-    this.http.post('https://rocky-everglades-44486.herokuapp.com/users/login', ({email: this.email.value, password: this.password.value}), { observe: 'response' })
+    this.http.post('https://rocky-everglades-44486.herokuapp.com/users/login',
+      ({email: this.email.value, password: this.password.value}),
+      { observe: 'response' })
       .subscribe((data: HttpResponse<({email: string, password: string})>) => {
         localStorage.setItem('token', data.headers.get('x-auth'));
         this.notifier.notify( 'success', 'User sucessfully logged in!' );
