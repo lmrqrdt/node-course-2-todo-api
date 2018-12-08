@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -15,7 +15,7 @@ export class LoginComponent {
 
   private readonly notifier: NotifierService;
 
-  constructor(private http: HttpClient, private router: Router, notifierService: NotifierService) {
+  constructor(private http: HttpClient, private router: Router, notifierService: NotifierService, private cd: ChangeDetectorRef) {
     this.notifier = notifierService;
   }
 
@@ -28,5 +28,9 @@ export class LoginComponent {
      }, (error: any) => {
        this.notifier.notify( 'error', 'Login credentials invalid!' );
      });
+  }
+
+  ngAfterViewChecked(): void {
+    this.cd.detectChanges();
   }
 }

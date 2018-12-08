@@ -2,8 +2,8 @@
 
 
 <span *ngIf="!finalIsUserLoggedIn()">
-  <button class="menubutton" mat-raised-button color="primary" onclick="onLogin()">Login</button>
-  <button class="menubutton" mat-raised-button color="primary" onclick="onCreateUser()">Create an account</button>
+  <button class="menubutton" mat-raised-button color="primary" [routerLink]="['/login']">Login</button>
+  <button class="menubutton" mat-raised-button color="primary" [routerLink]="['/create-user']">Create an account</button>
 </span>
 
 
@@ -13,14 +13,19 @@
 </span>
 
 
+<!--
 <nav class="top-menu">
   <ul class="link-list">
     <li *ngIf="!finalIsUserLoggedIn()"><a [routerLink]="['/create-user']">Create an account</a></li>
+
+
     <li *ngIf="!finalIsUserLoggedIn()"><a [routerLink]="['/login']">Login</a></li>
-    <!--
     <li *ngIf="finalIsUserLoggedIn()"><a class="pseudo-link" (click)="hdrDeleteUser()">Delete your account</a></li>
     <li *ngIf="finalIsUserLoggedIn()"><a class="pseudo-link" (click)="hdrLogoff()">Logoff</a></li>
-    -->
+
     <br>
   </ul>
 </nav>
+-->
+
+

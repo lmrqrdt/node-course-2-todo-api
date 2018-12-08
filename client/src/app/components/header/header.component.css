@@ -16,3 +16,13 @@ a {
   width: 200px;
   margin-right: 5px;
 }
+
+.loginh2 {
+  display: none;
+  visibility: hidden;
+}
+
+.login-user-container {
+  display: none;
+  visibility: hidden;
+}

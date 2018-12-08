@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { FormControl, Validators } from '@angular/forms';
@@ -9,12 +9,16 @@ import { NotifierService } from 'angular-notifier';
   templateUrl: './create-user.component.html',
   styleUrls: ['./create-user.component.css']
 })
-export class CreateUserComponent implements OnInit {
+export class CreateUserComponent {
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required, Validators.minLength(6)]);
   private readonly notifier: NotifierService;
 
-  constructor(private http: HttpClient, private router: Router, notifierService: NotifierService) {
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private notifierService: NotifierService,
+    private cd: ChangeDetectorRef) {
     this.notifier = notifierService;
   }
 
@@ -29,7 +33,7 @@ export class CreateUserComponent implements OnInit {
     );
   }
 
-  ngOnInit() {
+  ngAfterViewChecked(): void {
+    this.cd.detectChanges();
   }
-
 }

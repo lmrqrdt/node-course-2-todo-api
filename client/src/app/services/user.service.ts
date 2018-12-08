@@ -13,6 +13,7 @@ export class UserService {
   constructor(private http: HttpClient, private router: Router, notifierService: NotifierService) {
     this.notifier = notifierService;
   }
+
   onLogoff() {
     const httpOptions = {
       headers: new HttpHeaders({
