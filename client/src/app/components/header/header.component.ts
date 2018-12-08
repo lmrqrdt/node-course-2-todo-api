@@ -19,7 +19,7 @@ export class HeaderComponent {
     this.userService.onDeleteUser();
   }
 
-  finalIsUserLoggedIn(): boolean {
+  hdrUserLoggedIn(): boolean {
     return this.userService.isUserLoggedIn();
   }
 }
