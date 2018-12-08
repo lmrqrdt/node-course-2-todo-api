@@ -11,14 +11,15 @@ export class HeaderComponent {
   constructor (private userService: UserService) {
   }
 
-  finalDelteUser() {
+  hdrLogoff() {
+    this.userService.onLogoff();
+  }
+
+  hdrDeleteUser() {
     this.userService.onDeleteUser();
   }
 
-  finalLogoff() {
-    this.userService.onLogoff();
+  hdrUserLoggedIn(): boolean {
+    return this.userService.isUserLoggedIn();
   }
-  ngOnInit() {
-  }
-
 }

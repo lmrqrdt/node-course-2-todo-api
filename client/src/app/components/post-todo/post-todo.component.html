@@ -1,8 +1,9 @@
 <br>
+<br>
 <div class="post-todo-container">
   <form (submit)="onCreatePost()">
     <mat-form-field>
-      <input matInput placeholder="Enter your task" [formControl]="text" required autofocus="autofocus">
+      <input matInput appAlwaysFocus placeholder="Enter your task" [formControl]="text" required>
     </mat-form-field>
     <br>
     <button mat-raised-button color="primary" type="submit">Submit To Do Item</button>
