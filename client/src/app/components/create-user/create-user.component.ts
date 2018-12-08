@@ -22,7 +22,7 @@ export class CreateUserComponent implements OnInit {
     this.http.post('http://localhost:3000/users', ({email: this.email.value, password: this.password.value}))
     .subscribe((data: HttpResponse<({_id: string, email: string})>) => {
       this.notifier.notify( 'success', 'Your account has been created! Please login to proceed.' );
-      this.router.navigate(['/login')];
+      this.router.navigate([('/login')]);
       }, (error: any) => {
         this.notifier.notify( 'error', 'Unable to create user account!' );
       }

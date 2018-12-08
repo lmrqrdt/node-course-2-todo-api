@@ -11,3 +11,8 @@ a {
   text-decoration: underline;
   cursor: pointer;
 }
+
+.menubutton {
+  width: 200px;
+  margin-right: 5px;
+}

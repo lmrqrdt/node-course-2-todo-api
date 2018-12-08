@@ -11,11 +11,11 @@ export class HeaderComponent {
   constructor (private userService: UserService) {
   }
 
-  finalDelteUser() {
+  hdrDeleteUser() {
     this.userService.onDeleteUser();
   }
 
-  finalLogoff() {
+  hdrLogoff() {
     this.userService.onLogoff();
   }
 
