@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { FormControl, Validators } from '@angular/forms';
 import { NotifierService } from 'angular-notifier';
 
@@ -13,7 +14,7 @@ export class CreateUserComponent implements OnInit {
   password = new FormControl('', [Validators.required, Validators.minLength(6)]);
   private readonly notifier: NotifierService;
 
-  constructor(private http: HttpClient, notifierService: NotifierService) {
+  constructor(private http: HttpClient, private router: Router, notifierService: NotifierService) {
     this.notifier = notifierService;
   }
 
@@ -21,6 +22,7 @@ export class CreateUserComponent implements OnInit {
     this.http.post('http://localhost:3000/users', ({email: this.email.value, password: this.password.value}))
     .subscribe((data: HttpResponse<({_id: string, email: string})>) => {
       this.notifier.notify( 'success', 'Your account has been created! Please login to proceed.' );
+      this.router.navigate(['/login')];
       }, (error: any) => {
         this.notifier.notify( 'error', 'Unable to create user account!' );
       }

@@ -58,4 +58,11 @@ export class UserService {
     this.router.navigate(['/']);
     });
   }
+  isUserLoggedIn(): boolean {
+    if (localStorage.getItem('token')) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

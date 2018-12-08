@@ -18,7 +18,8 @@ export class HeaderComponent {
   finalLogoff() {
     this.userService.onLogoff();
   }
-  ngOnInit() {
-  }
 
+  finalIsUserLoggedIn(): boolean {
+    return this.userService.isUserLoggedIn();
+  }
 }

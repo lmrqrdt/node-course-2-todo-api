@@ -1,8 +1,9 @@
 <br>
+<h2>Login here</h2>
 <div class="login-user-container">
   <form (submit)="onLogin()">
     <mat-form-field>
-      <input #input matInput placeholder="Enter your email" [formControl]="email" required autofocus="autofocus">
+      <input appAlwaysFocus matInput placeholder="Enter your email" [formControl]="email" required autofocus="autofocus">
       <mat-error *ngIf="email.errors">Email is invalid please try again.</mat-error>
     </mat-form-field>
   <br>

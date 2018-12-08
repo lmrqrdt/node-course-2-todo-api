@@ -2,10 +2,10 @@
 <nav class="top-menu">
 
   <ul class="link-list">
-    <li><a [routerLink]="['/create-user']">Create an account</a></li>
-    <li><a class="pseudo-link" (click)="finalDelteUser()">Delete your account</a></li>
-    <li><a [routerLink]="['/login']">Login</a></li>
-    <li><a class="pseudo-link" (click)="finalLogoff()">Logoff</a></li>
+    <li *ngIf="!finalIsUserLoggedIn()"><a [routerLink]="['/create-user']">Create an account</a></li>
+    <li *ngIf="!finalIsUserLoggedIn()"><a [routerLink]="['/login']">Login</a></li>
+    <li *ngIf="finalIsUserLoggedIn()"><a class="pseudo-link" (click)="finalDelteUser()">Delete your account</a></li>
+    <li *ngIf="finalIsUserLoggedIn()"><a class="pseudo-link" (click)="finalLogoff()">Logoff</a></li>
     <br>
   </ul>
 </nav>
