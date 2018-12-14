@@ -15,7 +15,7 @@ const appRoutes: Routes = [
   { path: 'todo-list', component: TodoListComponent },
   { path: 'mark', component: MarkTodoComponent },
   { path: 'delete-todo', component: DeleteTodoComponent },
-  // { path: '',   redirectTo: '/login', pathMatch: 'full' },
+  { path: '',   redirectTo: '/login', pathMatch: 'full' },
 ];
 
 @NgModule({

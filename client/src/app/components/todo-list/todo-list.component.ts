@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { NotifierService } from 'angular-notifier';
 
 @Component({
@@ -11,13 +12,13 @@ export class TodoListComponent {
   private readonly notifier: NotifierService;
 
   todos: any[];
-  constructor(http: HttpClient, notifierService: NotifierService) {
+  constructor(private http: HttpClient, private router: Router, private notifierService: NotifierService) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
         'x-auth': localStorage.getItem('token') || ''
       })
-    }
+    };
     this.notifier = notifierService;
     http.get('https://rocky-everglades-44486.herokuapp.com/todos', httpOptions)
       .subscribe((data: any) => {
@@ -27,9 +28,15 @@ export class TodoListComponent {
         this.notifier.notify( 'error', 'Unable to get to do list!' );
       });
   }
+
   refreshTodo(event) {
     this.todos = this.todos.filter((t) => {
       return t._id !== event;
     });
   }
+
+  onUpdate() {
+
+  }
 }
+
