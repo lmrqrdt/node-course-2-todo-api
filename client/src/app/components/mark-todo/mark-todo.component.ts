@@ -45,7 +45,7 @@ export class MarkTodoComponent {
         observe: 'response'
       })
     };
-    this.http.patch(`http://localhost:3000/todos/${this.parentToDo._id}`, {'text': editInput.value  }, httpOptions)
+    this.http.patch(`https://rocky-everglades-44486.herokuapp.com/todos/${this.parentToDo._id}`, {'text': editInput.value  }, httpOptions)
     .subscribe((data: ({todo: {_id: string, text: string}})) => {
       this.parentToDo.text = data.todo.text;
       this.notifier.notify( 'success', 'Your to do has been updated!' );
