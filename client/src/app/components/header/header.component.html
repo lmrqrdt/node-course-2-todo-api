@@ -1,0 +1,14 @@
+<h1>Welcome to the to do application!</h1>
+
+
+<span *ngIf="!hdrUserLoggedIn()">
+  <button class="menubutton" mat-raised-button color="primary" [routerLink]="['/login']">Login</button>
+  <button class="menubutton" mat-raised-button color="primary" [routerLink]="['/create-user']">Create an account</button>
+</span>
+
+
+<span *ngIf="hdrUserLoggedIn()">
+  <button class="menubutton" mat-raised-button color="primary" (click)="hdrLogoff()">Logoff</button>
+  <button class="menubutton" mat-raised-button color="primary" (click)="hdrDeleteUser()">Delete your account</button>
+</span>
+

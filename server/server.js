@@ -23,7 +23,6 @@ app.post('/todos', authenticate, (req, res) => {
     text: req.body.text,
     _creator: req.user._id
   });
-
   todo.save().then((doc) => {
     res.send(doc);
   }, (e) => {
@@ -112,7 +111,6 @@ app.post('/users', (req, res) => {
   let user = new User (body);
 
   user.save().then(() => {
-
     return user.generateAuthToken();
   }).then((token) => {
     res.header('x-auth', token).send(user);
@@ -131,8 +129,8 @@ app.post('/users/login', (req, res) => {
   let user = new User (body);
 
   User.findByCredentials(body.email, body.password).then((user) => {
-    return user.generateAuthToken().then((token) => {
-      res.header('x-auth', token).send(user);
+      return user.generateAuthToken().then((token) => {
+      res.header('Access-Control-Expose-Headers', 'x-auth').header('x-auth', token).send(user);
     })
   }).catch((e) => {
     res.status(400).send();

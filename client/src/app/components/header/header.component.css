@@ -1,0 +1,28 @@
+a {
+  font-size: 16pt;
+}
+
+.link-list {
+  list-style-type: none;
+}
+
+.pseudo-link {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.menubutton {
+  width: 200px;
+  margin-right: 5px;
+}
+
+.loginh2 {
+  display: none;
+  visibility: hidden;
+}
+
+.login-user-container {
+  display: none;
+  visibility: hidden;
+}

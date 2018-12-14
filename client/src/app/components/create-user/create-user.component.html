@@ -1,0 +1,18 @@
+<br>
+<h2>Create a user (Login upon completion)</h2>
+<br>
+<div class="create-user-container">
+  <form (submit)="onCreateUser()">
+    <mat-form-field>
+      <input matInput appAlwaysFocus placeholder="Enter your email" [formControl]="email" required>
+      <mat-error *ngIf="email.errors">Email is invalid please try again.</mat-error>
+    </mat-form-field>
+  <br>
+    <mat-form-field>
+      <input matInput placeholder="Enter your password" type="password" [formControl]="password"  required>
+      <mat-error *ngIf="password.errors">Minimum six characters.</mat-error>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button color="primary" type="submit">Submit user</button>
+  </form>
+</div>
