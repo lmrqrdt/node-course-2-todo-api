@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ChangeDetectorRef, AfterViewChecked } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -9,11 +9,15 @@ import { NotifierService } from 'angular-notifier';
   templateUrl: './post-todo.component.html',
   styleUrls: ['./post-todo.component.css']
 })
-export class PostTodoComponent {
+export class PostTodoComponent implements AfterViewChecked {
   text = new FormControl('', [Validators.required, Validators.minLength(6)]);
   private readonly notifier: NotifierService;
 
-  constructor(private http: HttpClient, private router: Router, notifierService: NotifierService) {
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    notifierService: NotifierService,
+    private cd: ChangeDetectorRef) {
     this.notifier = notifierService;
   }
 
@@ -31,6 +35,9 @@ export class PostTodoComponent {
      }, (error: any) => {
         this.notifier.notify( 'error', 'Unable to create to do!' );
      });
+  }
+  ngAfterViewChecked(): void {
+    this.cd.detectChanges();
   }
 }
 
