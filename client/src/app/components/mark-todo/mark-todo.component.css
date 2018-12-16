@@ -1,3 +1,13 @@
+.form-format {
+  font: 16px 'Times New Roman', Times, serif;
+}
+
+.button1 {
+  background: rgb(40, 179, 40);
+  color: white;
+  line-height: 20px;
+}
+
 .completion-box {
   font: 16px 'Times New Roman', Times, serif;
   margin-right: 5px;
@@ -8,11 +18,6 @@
   margin-right: 5px;
 }
 
-.button1 {
-  background: rgb(40, 179, 40);
-  color: white;
-  line-height: 20px;
-}
 
 
 

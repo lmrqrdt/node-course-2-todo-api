@@ -1,9 +1,8 @@
 <div>
-  <form>
+  <mat-form-field class="form-format">
     <table>
       <tr>
-        <td>Update to do?</td>
-        <td><input #editInput class="text-css" type="text"></td>
+        <td><input matInput #editInput class="text-css" placeholder="Enter update"></td>
         <td><button
           mat-raised-button
           color="primary"
@@ -13,7 +12,8 @@
         </button></td>
       </tr>
     </table>
-  </form>
+  </mat-form-field>
+ <div>
   <mat-checkbox
     class="completion-box"
     labelPosition="before"
@@ -22,6 +22,7 @@
     [(ngModel)]="parentToDo.completed">
       Completed?
   </mat-checkbox>{{displayCompleted()}}
+  </div>
   <div class="time-text" *ngIf="parentToDo.completed">
     Completed On: {{parentToDo.completedAt | date: 'medium'}}
   </div>
