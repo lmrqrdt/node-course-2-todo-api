@@ -50,6 +50,7 @@ export class MarkTodoComponent {
       this.parentToDo.text = data.todo.text;
       this.notifier.notify( 'success', 'Your to do has been updated!' );
       editInput.value = '';
+      editInput.blur();
      }, (error: any) => {
       console.log(error);
       this.notifier.notify( 'error', 'Unable to update to do list!' );

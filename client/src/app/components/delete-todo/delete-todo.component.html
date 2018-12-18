@@ -1,13 +1,7 @@
+<br>
 <div>
-  <mat-checkbox
-    class="deletion-box"
-    labelPosition="before"
-    (change)="onDelete($event)">
+  <button class="button2" mat-raised-button color="primary"
+    (click)="onDelete($event)">
       Delete this to do?
-  </mat-checkbox>
-  <!--
-    <span *ngIf="deleteSuccess">
-    Deleted {{parentToDo.text}}
-  </span>
-  -->
+  </button>
 </div>
