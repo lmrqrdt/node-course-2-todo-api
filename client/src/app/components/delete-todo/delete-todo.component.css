@@ -1,5 +1,5 @@
 .button2 {
-  background: rgb(40, 179, 40);
+  font: 16px 'Times New Roman', Times, serif;
   color: white;
-  line-height: 20px;
+  line-height: 16px;
 }
